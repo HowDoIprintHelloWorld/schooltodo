@@ -1,0 +1,21 @@
+h1 {
+  color: blue;
+}
+
+.DoneDiv p {
+  color: gray;
+}
+
+
+
+html, body {
+  background-color: white;
+  padding: 0px;
+  margin: 0px;
+  
+}
+
+* {
+  
+  font-family: Arial, Helvetica, sans-serif;
+}

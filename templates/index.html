@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>ToDo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  </head>
+
+  <body>
+    <div id="header-div">
+      <a id="loginLink" href="/login">{{ name }}</a>
+      <div id="form-div">
+      <form action="/" method="post">
+        <label for="subjects">Fach:   </label>
+        <select name="subject" id="subjects">
+        {% for subject in subjects %}
+          <option value="{{ subject }}">{{ subject }}</option>
+        {% endfor %}
+        </select>
+        <label for="task" id="aufgabe">Info:   </label>
+        <input id="task-input" type="text" name="task"></input>
+        <label for="due-date">Bis:   </label>
+        <input type="date" id="due-date" name="due-date"
+         min="2022-01-01" max="2023-12-31">
+        <!-- <label for="test-check">Test:   </label>
+        <input type="checkbox" name="test-check" id="test-check"></input>
+        -->
+        <button type="submit" value="Submit">Fertig</button>
+      </form>
+      </div>
+    </div>
+    <div class="todoDiv">
+    <p id="homework-denoter">Hausaufgaben</p>
+    {% for item in toDoL %}
+      {% if item.split('&|')[0].strip() not in checkedOff %}
+      <div class="NotDoneDiv">
+        <a href="/remove?item={{ item.split('&|')[0] }}" class="remove"><img class="icon" src={{ url_for("static", filename="images/bin.png") }}></a>
+        <a href="/done?item={{ item.split('&|')[0] }}" class="done"><img class="icon" src={{ url_for("static", filename="images/check.png") }}></a>
+        <p class="item">{{ item[item.index("&|")+2:].replace("&|", " ") }}</p>
+      </div>
+      {% else %}
+      <div class="DoneDiv">
+        <a href="/remove?item={{ item.split('&|')[0] }}" class="remove"><img class="icon" src={{ url_for("static", filename="images/bin.png") }}></a>
+        <a href="/done?item={{ item.split('&|')[0] }}" class="done"><img class="icon" src={{ url_for("static", filename="images/check.png") }}></a>
+        <p class="item">{{ item[item.index("&|")+2:].replace("&|", " ") }}</p>
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+    <!--
+    <div class="todoDiv">
+    <h1>Tests</h1>
+      {% for testitem in toDoTestL %}
+      <p class="item">{{ testitem[testitem.index("&|")+2:].replace("&|", "") }}</p>
+    {% endfor %}
+    </div>
+    -->
+  </body>
+</html>

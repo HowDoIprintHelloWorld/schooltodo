@@ -1,0 +1,116 @@
+#header-div {
+  background-image: linear-gradient( to left, lightblue, midnightblue);
+  margin: None;
+
+  width: 100%;
+  padding: 20px;
+  padding-bottom: 25px;
+}
+
+#form-div form {
+  width: 75%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+form label {
+  font-size: 30px;
+  text-align: center;
+  align-items: center;
+  vertical-align: center;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #FFF;
+}
+
+form input {
+  border: None;
+  border-radius: 2px;
+  background-color: white;
+}
+
+#task-input {
+  font-size: 15px;
+  height: 30px;
+  width: 200px;
+}
+
+button {
+  border: None;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 40px;
+  width: 60px;
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 10px;
+  background-color: royalblue;
+}
+
+select {
+  border: None;
+  border-radius: 3px;
+  height: 40px;
+  background-color: white;
+  width: 120px;
+  font-size: 15px;
+  font-weight: bold;
+  color: royalblue;
+}
+
+
+#loginLink {
+  display: inline;
+  float: right;
+  margin-right: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #444;
+}
+
+#homework-denoter {
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+  color: navy;
+  font-weight: bold;
+  text-decoration: underline;
+  background: -webkit-linear-gradient( right, lightblue, midnightblue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#toDoDiv {
+  margin-top: 10%;
+}
+
+.item {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0px;
+  padding-left: 2rem;
+  color: navy;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+  display: inline;
+  border-radius: 50%;
+  padding: 5px;
+  margin-left: 1rem;
+}
+
+.icon:hover {
+  background-color: lightgray;
+}
+
+
+.NotDoneDiv *, .DoneDiv * {
+  display: inline-block;
+  margin-top: 20px;
+}

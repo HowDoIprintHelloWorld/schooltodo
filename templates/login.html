@@ -1,0 +1,20 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>ToDo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  </head>
+
+  <body>
+    <a id="back-home" href="/">Home</a>
+    <div id="loginDiv">
+      <form action="/login" method="post">
+        <p id="username-label">Username:   </pl><br>
+        <input name="username" type="text" id="username-input" autofocus></input>
+        <button id="login-button" value="login" type="submit">login</button>
+      </form>
+    </div>
+  </body>
+</html>
