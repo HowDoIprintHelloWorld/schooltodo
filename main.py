@@ -57,4 +57,4 @@ if __name__ == "__main__":
   db, examdb = DB("normal"), DB("exam")
   uh = UserHandler()
   subjects = set(["Geography", "Latin", "Biology", "Chemistry"])
-  app.run(host='0.0.0.0', port=81)
+  app.run(host='0.0.0.0', port=80)
