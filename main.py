@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, make_response
 from src.ScuffedDb import DB
 from src.HandleUsers import UserHandler
+from os import environ
 
 app = Flask(__name__)
 
@@ -57,4 +58,4 @@ if __name__ == "__main__":
   db, examdb = DB("normal"), DB("exam")
   uh = UserHandler()
   subjects = set(["Geography", "Latin", "Biology", "Chemistry"])
-  app.run(host='0.0.0.0', port=80)
+  app.run(host='0.0.0.0', port=os.environ.get('PORT'))
