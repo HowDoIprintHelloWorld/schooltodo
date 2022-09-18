@@ -37,7 +37,8 @@
       <div class="NotDoneDiv">
         <a href="/remove?item={{ item.split('&|')[0] }}" class="remove"><img class="icon" src={{ url_for("static", filename="images/bin.png") }}></a>
         <a href="/done?item={{ item.split('&|')[0] }}" class="done"><img class="icon" src={{ url_for("static", filename="images/check.png") }}></a>
-        <p class="item">{{ item[item.index("&|")+2:].replace("&|", " ") }}</p>
+        <p class="item">{{ item[item.index("&|")+2:].replace("&|", " ").replace(item[item.index("&|")+2:].split("&|")[-1], "") }}</p>  
+        <p class="item" style="position: relative; right: 5px;">({{ item[item.index("&|")+2:].split("&|")[-1] }})</p>
       </div>
       {% else %}
       <div class="DoneDiv">

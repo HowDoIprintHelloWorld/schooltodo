@@ -85,12 +85,13 @@ select {
 
 #toDoDiv {
   margin-top: 10%;
+  width: 100%;
 }
 
 .item {
   font-size: 30px;
   font-weight: bold;
-  text-align: center;
+  
   margin: 0px;
   padding-left: 2rem;
   color: navy;
@@ -109,6 +110,9 @@ select {
   background-color: lightgray;
 }
 
+.NotDoneDiv, .DoneDiv {
+  width: 100%;
+}
 
 .NotDoneDiv *, .DoneDiv * {
   display: inline-block;

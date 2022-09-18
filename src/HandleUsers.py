@@ -6,7 +6,7 @@ class UserHandler():
 
   def check(self, userName):
     with open(self.fileLoc, "r") as file:
-      return any([user for user in file.readlines() if userName == user.strip().lower()])
+      return any([user for user in file.readlines() if userName == user.split()[0].strip().lower()])
 
   def userFromCookie(self, cookieVal):
     return base64.b64decode(cookieVal).decode("utf-8")

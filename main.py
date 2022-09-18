@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, make_response
 from src.ScuffedDb import DB
 from src.HandleUsers import UserHandler
+from src.GetSubjects import getSubjects, filterSubjects
 from os import environ
 
 app = Flask(__name__)
@@ -9,9 +10,10 @@ app = Flask(__name__)
 @app.route('/', methods=["GET", "POST"])
 def index():
   name = "login"
+  subjects = getSubjects()
   if request.method == "POST":
     if request.form.get('subject') and request.form.get('task') and request.form.get('due-date'):
-      data = f"{request.form.get('subject')} &| {request.form.get('task')} &| {request.form.get('due-date')}\n"
+      data = f"{request.form.get('subject')}:    &| {request.form.get('task')} &|           {request.form.get('due-date')}\n"
       if request.form.get('test-check') == None:
         db.add(data)
       else:
@@ -20,10 +22,12 @@ def index():
   db.update()
   examdb.update()
   checkedOff = []
-  if request.cookies.get("user"):
-    checkedOff = uh.getCheckedOff(request.cookies.get("user"))
-    name = uh.userFromCookie(request.cookies.get("user"))
+  user = request.cookies.get("user")
+  if user:
+    checkedOff = uh.getCheckedOff(user)
+    name = uh.userFromCookie(user)
     name = name[0].upper() + name[1:]
+    subjects = filterSubjects(uh.userFromCookie(user), subjects)
   return render_template("index.html", toDoL=db.grab(), subjects=subjects, toDoTestL=examdb.grab(), checkedOff=checkedOff, name=name)
 
 @app.route("/remove")
@@ -57,5 +61,4 @@ def done():
 if __name__ == "__main__":
   db, examdb = DB("normal"), DB("exam")
   uh = UserHandler()
-  subjects = set(["Geography", "Latin", "Biology", "Chemistry"])
   app.run(host='0.0.0.0', port=environ.get('PORT'))
